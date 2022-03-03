@@ -32,18 +32,23 @@
 using System.Collections;
 using System.Collections.Generic;
 // @lc code=start
-public class Solution { 
-    public IList<string> LetterCombinations(string digits) {
-        List<string> set = new List<string>{"abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+public class Solution
+{
+    public IList<string> LetterCombinations(string digits)
+    {
+        List<string> set = new List<string> { "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
         IList<string> result = new List<string>();
-        foreach(char d in digits){
-            if(result.Count==0){
-                foreach(char c in set[d-'2']) result.Add(c.ToString());
+        foreach (char d in digits)
+        {
+            if (result.Count == 0)
+            {
+                foreach (char c in set[d - '2']) result.Add(c.ToString());
                 continue;
             }
             int cnt = result.Count;
-            for(int i=0;i<cnt;i++){
-                foreach(char c in set[d-'2']) result.Add(string.Concat(result[0],c.ToString()));
+            for (int i = 0; i < cnt; i++)
+            {
+                foreach (char c in set[d - '2']) result.Add(string.Concat(result[0], c.ToString()));
                 result.RemoveAt(0);
             }
         }

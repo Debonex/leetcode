@@ -9,24 +9,23 @@
  * @param {string} s
  * @return {number}
  */
-var lengthOfLongestSubstring = function(s) {
-    let maxlen = 0
-    const len = s.length
-    let st = new Set()
-    let j=0
-    for(let i=0;i<len;++i){
-        if(len-i+1<maxlen) break
-        i>0 && (st.delete(s[i-1]))
-        while(j<len&&(!st.has(s[j]))){
-            st.add(s[j])
-            ++j;
-        }
-        if(st.size>maxlen) maxlen=st.size
+var lengthOfLongestSubstring = function (s) {
+  let maxlen = 0;
+  const len = s.length;
+  let st = new Set();
+  let j = 0;
+  for (let i = 0; i < len; ++i) {
+    if (len - i + 1 < maxlen) break;
+    i > 0 && st.delete(s[i - 1]);
+    while (j < len && !st.has(s[j])) {
+      st.add(s[j]);
+      ++j;
     }
-    return maxlen
+    if (st.size > maxlen) maxlen = st.size;
+  }
+  return maxlen;
 };
 
-var str = "abcds"
-console.log(lengthOfLongestSubstring(str))
+var str = "abcds";
+console.log(lengthOfLongestSubstring(str));
 // @lc code=end
-

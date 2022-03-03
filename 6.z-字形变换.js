@@ -10,34 +10,34 @@
  * @param {number} numRows
  * @return {string}
  */
-var convert = function(s, numRows) {
-    if(numRows==1)return s;
-    const len = s.length
-    // for(let i=0;i<numRows;++i){
-    //     let line = ''
-    //     let gap = [2*(numRows-i-1),2*i]
-    //     let pt = i
-    //     let k = 0
-    //     while(pt<len){
-    //         (pt>numRows-1) && gap[1-k]!=0 && (line+=nspace(gap[1-k]-1))
-    //         gap[k]!=0 && (line+=s[pt])
-    //         pt += gap[k]
-    //         k = 1-k
-    //     }
-    //     console.log(line)
-    // }
-    let res = ''
-    for(let i=0;i<numRows;++i){
-        let gap = [2*(numRows-i-1),2*i]
-        let pt=i
-        let k=0
-        while(pt<len){
-            gap[k]!=0 && (res+=s[pt])
-            pt+=gap[k]
-            k=1-k
-        }
+var convert = function (s, numRows) {
+  if (numRows == 1) return s;
+  const len = s.length;
+  // for(let i=0;i<numRows;++i){
+  //     let line = ''
+  //     let gap = [2*(numRows-i-1),2*i]
+  //     let pt = i
+  //     let k = 0
+  //     while(pt<len){
+  //         (pt>numRows-1) && gap[1-k]!=0 && (line+=nspace(gap[1-k]-1))
+  //         gap[k]!=0 && (line+=s[pt])
+  //         pt += gap[k]
+  //         k = 1-k
+  //     }
+  //     console.log(line)
+  // }
+  let res = "";
+  for (let i = 0; i < numRows; ++i) {
+    let gap = [2 * (numRows - i - 1), 2 * i];
+    let pt = i;
+    let k = 0;
+    while (pt < len) {
+      gap[k] != 0 && (res += s[pt]);
+      pt += gap[k];
+      k = 1 - k;
     }
-    return res
+  }
+  return res;
 };
 
 // function nspace(n){

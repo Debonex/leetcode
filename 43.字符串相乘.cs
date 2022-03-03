@@ -37,7 +37,8 @@
  */
 
 // @lc code=start
-public class Solution {
+public class Solution
+{
     public string Multiply(string num1, string num2)
     {
         string result = "0";

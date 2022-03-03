@@ -32,28 +32,34 @@
  */
 using System;
 // @lc code=start
-public class Solution {
-    public int[] SearchRange(int[] nums, int target) {
-        int[] res = new int[2]{-1,-1}; 
+public class Solution
+{
+    public int[] SearchRange(int[] nums, int target)
+    {
+        int[] res = new int[2] { -1, -1 };
         int l = 0;
-        int r = nums.Length-1;
-        int m=(l+r)/2;
-        while(l<=r&&nums[m]!=target){
-            if(nums[m]>target) r=m-1;
-            else if(nums[m]<target) l=m+1;
-            m=(l+r)/2;
+        int r = nums.Length - 1;
+        int m = (l + r) / 2;
+        while (l <= r && nums[m] != target)
+        {
+            if (nums[m] > target) r = m - 1;
+            else if (nums[m] < target) l = m + 1;
+            m = (l + r) / 2;
         }
-        if(l<=r&&nums[m]==target){
-            res[0]=m;
-            res[1]=m;
-            while(nums[res[0]]==target){
+        if (l <= r && nums[m] == target)
+        {
+            res[0] = m;
+            res[1] = m;
+            while (nums[res[0]] == target)
+            {
                 res[0]--;
-                if(res[0]<0) break;
+                if (res[0] < 0) break;
             }
             res[0]++;
-            while(nums[res[1]]==target){
+            while (nums[res[1]] == target)
+            {
                 res[1]++;
-                if(res[1]>=nums.Length) break;
+                if (res[1] >= nums.Length) break;
             }
             res[1]--;
         }

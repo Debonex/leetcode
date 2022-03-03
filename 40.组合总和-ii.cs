@@ -50,50 +50,63 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 // @lc code=start
-public class Solution {
-    public IList<IList<int>> CombinationSum2(int[] candidates, int target) {
+public class Solution
+{
+    public IList<IList<int>> CombinationSum2(int[] candidates, int target)
+    {
         IList<IList<int>> result = new List<IList<int>>();
-        Dictionary<int,int> dic = new Dictionary<int, int>();
+        Dictionary<int, int> dic = new Dictionary<int, int>();
         Array.Sort(candidates);
-        foreach(int i in candidates){
-            if(dic.ContainsKey(i)) dic[i]++;
-            else dic.Add(i,1);
+        foreach (int i in candidates)
+        {
+            if (dic.ContainsKey(i)) dic[i]++;
+            else dic.Add(i, 1);
         }
         List<int> keys = new List<int>(dic.Keys);
-        dfs(ref dic,keys,target,ref result,0,new List<int>());
+        dfs(ref dic, keys, target, ref result, 0, new List<int>());
         return result;
     }
 
-    private void dfs(ref Dictionary<int,int> dic,List<int> keys,int target,ref IList<IList<int>> result,int firstidx,List<int> temp){
-        for(int idx=firstidx;idx<keys.Count;idx++){
+    private void dfs(ref Dictionary<int, int> dic, List<int> keys, int target, ref IList<IList<int>> result, int firstidx, List<int> temp)
+    {
+        for (int idx = firstidx; idx < keys.Count; idx++)
+        {
             int key = keys[idx];
             List<int> list = new List<int>(temp);
             list.Add(key);
             dic[key]--;
             int tempsum = sum(list);
-            if(tempsum>target){
+            if (tempsum > target)
+            {
                 dic[key]++;
                 return;
-            }else if(tempsum==target){
+            }
+            else if (tempsum == target)
+            {
                 result.Add(list);
                 dic[key]++;
                 return;
-            }else{
-                if(dic[key]>0) dfs(ref dic,keys,target,ref result,idx,list);
-                else if(idx==keys.Count-1){
+            }
+            else
+            {
+                if (dic[key] > 0) dfs(ref dic, keys, target, ref result, idx, list);
+                else if (idx == keys.Count - 1)
+                {
                     // Console.WriteLine("last idx");
                     dic[key]++;
                     return;
-                }else dfs(ref dic,keys,target,ref result,idx+1,list); 
+                }
+                else dfs(ref dic, keys, target, ref result, idx + 1, list);
 
                 dic[key]++;
             }
         }
     }
 
-    private int sum(List<int> temp){
-        int sum=0;
-        foreach(int i in temp)sum+=i;
+    private int sum(List<int> temp)
+    {
+        int sum = 0;
+        foreach (int i in temp) sum += i;
         return sum;
     }
 
