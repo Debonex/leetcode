@@ -29,3 +29,15 @@ impl Solution {
     }
 }
 // @lc code=end
+
+#[test]
+fn t80() {
+    fn test(list: &mut Vec<i32>, expect: &[i32]) {
+        let res = Solution::remove_duplicates(list);
+        assert_eq!(list, expect);
+        assert_eq!(res, expect.len() as i32)
+    }
+
+    test(&mut vec![0, 0, 1, 1, 1, 1, 2, 3, 3], &[0, 0, 1, 1, 2, 3, 3]);
+    test(&mut vec![1, 1, 1, 2, 2, 3], &[1, 1, 2, 2, 3]);
+}

@@ -118,3 +118,17 @@ impl Solution {
     }
 }
 // @lc code=end
+
+#[test]
+fn t31() {
+    fn test(list: &mut Vec<i32>, expect: &[i32]) {
+        Solution::next_permutation(list);
+        assert_eq!(list, expect);
+    }
+
+    test(&mut vec![3, 2, 1], &[1, 2, 3]);
+    test(&mut vec![1, 2, 3], &[1, 3, 2]);
+    test(&mut vec![1, 3, 2], &[2, 1, 3]);
+    test(&mut vec![2, 3, 1], &[3, 1, 2]);
+    test(&mut vec![1, 1, 5], &[1, 5, 1]);
+}
